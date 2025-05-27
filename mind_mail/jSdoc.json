@@ -1,0 +1,12 @@
+{
+  "source": {
+    "include": ["api", "mail_sort", "mind_map", "web_interface"],
+    "exclude": ["node_modules"],
+    "includePattern": ".+\\.js$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "opts": {
+    "destination": "./docs",
+    "recurse": true
+  }
+}

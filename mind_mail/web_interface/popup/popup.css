@@ -1,0 +1,121 @@
+#mailPopup {
+  position: absolute;
+  top: 40px;
+  top: 40px;
+  height: 71%;
+  width: 28.05%;
+  border: 1px solid #ddd;
+  overflow-y: auto;  /* Permet de défiler si le contenu dépasse la hauteur */
+  background: #f9fbfd;
+  border: 1px solid #cfd7df;
+  padding: 15px;
+  z-index: 1500;
+}
+
+#popupHeader {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#popupSearchInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+#popupSearchInput:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.mailCard {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mailRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.iconContainer {
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.mailIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.attachmentIcon {
+  width: 20px;
+  height: 20px;
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.subjectContainer {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  flex-grow: 1;
+  flex: 1;
+}
+
+.dateContainer {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+  color: #888;
+  flex-grow: 0.7;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  flex: 1;
+}
+
+.buttonContainer button {
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+.mailAuthor, 
+.mailDate {
+  font-size: 12px;
+  color: #888888;
+}
+
+________________________________
+
+#mailViewerPopup button {
+  margin: 0 5px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+#mailViewerPopup h2 {
+  margin-top: 0;
+}
+
+

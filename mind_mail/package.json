@@ -1,0 +1,19 @@
+{
+  "name": "hello_world",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@mind-elixir/node-menu": "^1.0.4",
+    "@mind-elixir/node-menu-neo": "^1.0.4",
+    "docdash": "^2.0.2",
+    "mind-elixir": "^4.3.7",
+    "mind-elixir-react": "^1.0.1"
+  }
+}

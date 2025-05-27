@@ -1,0 +1,57 @@
+{
+  "manifest_version": 2,
+  "name": "Mind Mail",
+  "description": "Texte personnalisable",
+  "version": "1.0",
+  "author": "Thunderbird Team",
+  "browser_specific_settings": {
+      "gecko": {
+          "id": "mindmail@ut3.fr",
+          "strict_min_version": "115.0"
+      }
+  },
+  "browser_action": {
+      "default_title": "Mind Mail",
+      "default_icon": "ressources/internet-32px.png"
+  },
+  "icons": {
+      "64": "ressources/internet.png",
+      "32": "ressources/internet-32px.png",
+      "16": "ressources/internet-16px.png"
+  },
+  "background": {
+      "scripts": ["background.js"],
+      "persistent": true
+  },
+
+  "permissions": [
+      "messagesRead",
+      "messagesMove",
+      "messagesDelete",
+      "accountsRead",
+      "accountsFolders",
+      "tabs",
+      "activeTab",
+      "storage",
+      "notifications"
+  ],
+
+  "experiment_apis": {
+    "Xpunge": {
+      "schema": "api/Xpunge_api/Xpunge/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["Xpunge"]],
+        "script": "api/Xpunge_api/Xpunge/implementation.js"
+      }
+    },
+    "LegacyPrefsMigrator": {
+      "schema": "api/Xpunge_api/XpungeLegacyPrefsMigrator/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["XpungeLegacyPrefsMigrator"]],
+        "script": "api/Xpunge_api/XpungeLegacyPrefsMigrator/implementation.js"
+      }
+    }
+  }
+}

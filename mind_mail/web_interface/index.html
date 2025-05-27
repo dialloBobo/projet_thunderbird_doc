@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Mail</title>
+    <script type="module" src="../mind_map/mindMap.js"></script>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+    <nav id="menuBar">
+
+        <div id="reloadContainer">
+            <button id="reloadBtn" class="reload">
+                <img src="../ressources/reload.svg" alt="Paramètres" height="20" width="20">
+                <span>Mettre à jour le tri</span>
+            </button>
+        </div>
+        
+        <div id="settingsContainer">
+            <button id="settingsBtn">
+                <img src="../ressources/settings.svg" alt="Paramètres" height="20" width="20">
+            </button>
+
+            <div id="settingsMenu" class="hidden">
+                <ul>
+                    <!--<li id="exportMindMap">
+                        <span>Exporter la carte mentale</span>
+                        <span class="arrow">
+                            <img src="ressources/arrow.svg" alt="Paramètres" height="14" width="14">
+                        </span>
+                    </li>-->
+                    <li id="resetMindMap">
+                        <span>Réinitialiser la carte mentale</span>
+                        <span class="arrow">
+                            <img src="../ressources/arrow.svg" alt="Paramètres" height="14" width="14">
+                        </span>
+                    </li>
+
+                    <li id="openNotice">
+                        <span>Notice d'utilisation</span>
+                        <span class="arrow">
+                            <img src="../ressources/arrow.svg" alt="Paramètres" height="14" width="14">
+                        </span>
+                    </li>                
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+    <div id="map"></div>
+
+    <div id="unsortedMailsSection">
+        <h2>
+            Mails non classés <span id="unsortedCount">(0)</span>
+        </h2>
+        <div id="moveAllContainer">
+            <button id="moveAllBtn" class="move-btn">Tout Déplacer</button>
+        </div>                      
+        <div id="unsortedMails"></div>
+    </div>
+
+    <div id="messageButtonContainer"></div>
+    <ul id="mailList"></ul>
+    <div id="emailContent"></div>
+
+    <div id="customConfirm" class="hidden">
+        <div class="confirmBox">
+            <p id="confirmMessage">
+                Êtes-vous certain de vouloir réinitialiser la carte mentale ?<br><br>
+                Vous allez perdre la structure et les tags de votre carte mentale, vos mails ne seront pas supprimés.
+            </p>
+            <div class="confirmButtons">
+                <button id="confirmYes">Oui, réinitialiser</button>
+                <button id="confirmNo">Non</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../mind_map/saveMindMap.js"></script>
+    <script type="module" src="./menu/menu.js"></script>
+    <script type="module" src="../mail_sort/unsortedMailsUI.js"></script>
+    
+</body>
+</html>

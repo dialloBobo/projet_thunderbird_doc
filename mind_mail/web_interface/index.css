@@ -1,0 +1,236 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#menuBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #e9e9e9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#settingsContainer {
+    position: absolute;
+    right: 15px;
+}
+
+#settingsBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#settingsBtn:hover {
+    background-color: #e0e0e0;
+}
+
+#settingsMenu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 225px;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 2000;
+}
+
+#settingsMenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#settingsMenu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#settingsMenu li .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#settingsMenu li:hover {
+    background-color: #f0f0f0;
+}
+
+#map {
+    margin-top: 40px;
+    height: 75vh;
+    width: 70%;
+    left: 29.92%;
+    border: 1px solid #ddd;
+}
+
+#resetBtn {
+    margin: 20px;
+}
+
+#notificationCenter {
+    margin: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.notification {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.notification:hover {
+    background-color: #f0f0f0;
+}
+
+#customConfirm {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.confirmBox {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    max-width: 415px;
+    text-align: center;
+}
+
+.confirmButtons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.confirmButtons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#confirmYes {
+    background-color: rgb(244, 244, 244);
+    color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#confirmYes:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+#confirmNo {
+    background-color: rgb(244, 244, 244);
+    color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#confirmNo:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+#reloadContainer {
+    position: absolute;
+    left: 15px;
+}
+
+#reloadBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#reloadBtn:hover {
+    background-color: #e0e0e0;
+}
+
+#reloadBtn span {
+    margin-left: 6px;
+}
+
+#unsortedMailsSection {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+.mail-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.folder-select {
+    min-width: 200px;
+    padding: 5px;
+}
+.move-btn {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.move-btn:hover {
+    background-color: #45a049;
+}
+
+#moveAllBtn {
+    margin-left: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#moveAllBtn:hover {
+    background-color: #45a049;
+}
+
+#moveAllContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}

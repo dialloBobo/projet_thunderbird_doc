@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: mail_sort/getMail.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: mail_sort/getMail.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { getMindMailFolder } from './mailSort.js';
+
+/**
+ * Récupère tous les messages classés dans les sous-dossiers de la boîte MindMail,
+ * à l'exception du dossier "Non Classé", et les trie par date décroissante.
+ *
+ * @async
+ * @function getAllSortedMessages
+ * @returns {Promise&lt;Object[]>} Liste d’objets messages triés par date (du plus récent au plus ancien)
+ * Chaque message contient : subject, author, id, date, et folderId (avec accountId et path).
+ */
+export async function getAllSortedMessages() {
+    const results = [];
+    const accounts = await browser.accounts.list();
+    const account = accounts[accounts.length - 1];
+    const mindMailFolder = await getMindMailFolder(account);
+
+    const fullSubFolders = await browser.folders.getSubFolders({
+        accountId: mindMailFolder.accountId,
+        path: mindMailFolder.path
+    });
+
+    for (const folder of fullSubFolders) {
+        await collectMessages(folder, results);
+    }
+
+    // Tri des messages par date décroissante
+    results.sort((a, b) => new Date(b.date) - new Date(a.date));
+    return results;
+}
+
+/**
+ * Parcourt un dossier donné pour y collecter tous les messages,
+ * en ignorant ceux du dossier "Non Classé".
+ *
+ * @async
+ * @function collectMessages
+ * @param {Object} folder - Objet dossier Thunderbird (avec `name`, `accountId`, `path`)
+ * @param {Object[]} results - Tableau de messages où stocker les résultats collectés
+ */
+async function collectMessages(folder, results) {
+    // Ignore le dossier "Non Classé"
+    if (folder.name === "Non Classé") {
+        return;
+    }
+
+    try {
+        let page = await messenger.messages.list({ accountId: folder.accountId, path: folder.path });
+
+        while (page) {
+            const messages = page.messages || [];
+
+            for (let msg of messages) {
+                results.push({
+                    subject: msg.subject,
+                    author: msg.author,
+                    id: msg.id,
+                    date: msg.date,
+                    folderId: {
+                        accountId: folder.accountId,
+                        path: folder.path
+                    }
+                });
+            }
+
+            // S'il y a d'autres pages de messages à charger
+            if (page.id) {
+                page = await messenger.messages.continueList(page.id);
+            } else {
+                break;
+            }
+        }
+
+    } catch (e) {
+        console.warn(`Impossible de lire le dossier ${folder.name} :`, e);
+    }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#clearNotifications">clearNotifications</a></li><li><a href="global.html#clearStoredFoldersData">clearStoredFoldersData</a></li><li><a href="global.html#collectMessages">collectMessages</a></li><li><a href="global.html#createFolderSelect">createFolderSelect</a></li><li><a href="global.html#createMailItem">createMailItem</a></li><li><a href="global.html#createMindMapFolders">createMindMapFolders</a></li><li><a href="global.html#createMoveDialog">createMoveDialog</a></li><li><a href="global.html#createSubFolder">createSubFolder</a></li><li><a href="global.html#emptyTrashFolder">emptyTrashFolder</a></li><li><a href="global.html#executeMailSort">executeMailSort</a></li><li><a href="global.html#extractNodeAndTagNames">extractNodeAndTagNames</a></li><li><a href="global.html#extractNodeNames">extractNodeNames</a></li><li><a href="global.html#findFolderIdByName">findFolderIdByName</a></li><li><a href="global.html#findTextPart">findTextPart</a></li><li><a href="global.html#getAllFolders">getAllFolders</a></li><li><a href="global.html#getAllMails">getAllMails</a></li><li><a href="global.html#getAllSortedMessages">getAllSortedMessages</a></li><li><a href="global.html#getAllTags">getAllTags</a></li><li><a href="global.html#getLeafNodes">getLeafNodes</a></li><li><a href="global.html#getMailsFromFolder">getMailsFromFolder</a></li><li><a href="global.html#getMindMailFolder">getMindMailFolder</a></li><li><a href="global.html#getMindmapPaths">getMindmapPaths</a></li><li><a href="global.html#getRootName">getRootName</a></li><li><a href="global.html#getSavedMindMap">getSavedMindMap</a></li><li><a href="global.html#getTags">getTags</a></li><li><a href="global.html#getTrashFolderOfLastAccount">getTrashFolderOfLastAccount</a></li><li><a href="global.html#getUnsortedFolder">getUnsortedFolder</a></li><li><a href="global.html#getUnsortedMails">getUnsortedMails</a></li><li><a href="global.html#hasAttachment">hasAttachment</a></li><li><a href="global.html#indexNodesByTags">indexNodesByTags</a></li><li><a href="global.html#initAccounts">initAccounts</a></li><li><a href="global.html#initMainFolder">initMainFolder</a></li><li><a href="global.html#initUnsortedMailsUI">initUnsortedMailsUI</a></li><li><a href="global.html#loadAllPreviouslyCopiedIds">loadAllPreviouslyCopiedIds</a></li><li><a href="global.html#loadAndDisplayNotifications">loadAndDisplayNotifications</a></li><li><a href="global.html#loadCopiedMailIds">loadCopiedMailIds</a></li><li><a href="global.html#mailSort">mailSort</a></li><li><a href="global.html#moveMailToFolder">moveMailToFolder</a></li><li><a href="global.html#onStartCopy">onStartCopy</a></li><li><a href="global.html#resetMindMap">resetMindMap</a></li><li><a href="global.html#saveCopiedMailId">saveCopiedMailId</a></li><li><a href="global.html#saveMindMap">saveMindMap</a></li><li><a href="global.html#storeNotification">storeNotification</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue May 27 2025 22:04:55 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
