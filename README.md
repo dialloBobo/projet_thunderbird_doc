@@ -22,3 +22,7 @@ Maîtrise d'oeuvre:
 La notice d'utilisation de l'extension est accessible via le lien suivant:
 
 [Consulter la notice d'utilisation](https://docs.google.com/document/d/1jr-BOHhd-yW8ez_JFGWlTmW-lulayzJJkrLUzTZTsyU/edit?usp=sharing)
+
+
+Pour la documentation pour la generer il faut ouvrir un terminal dans le dossier ou se trouve le manifest.json ensuite executer la commande sur le terminal << npm install -g jsdoc >>
+et pour pouvoir visualiser le doc il faut taper la commande << start docs/index.html >>
